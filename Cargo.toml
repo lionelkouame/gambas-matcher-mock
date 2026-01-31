@@ -1,0 +1,19 @@
+[package]
+name = "gambas-matcher-mock"
+version = "0.1.0"
+edition = "2021"
+authors = ["Lionel Kouame"]
+description = "API interception and simulation utility - a smart proxy for mocking unstable APIs"
+license = "MIT"
+
+[dependencies]
+tokio = { version = "1.35", features = ["full"] }
+hyper = { version = "0.14", features = ["full"] }
+hyper-tls = "0.5"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+regex = "1.10"
+log = "0.4"
+env_logger = "0.10"
+clap = { version = "4.4", features = ["derive"] }

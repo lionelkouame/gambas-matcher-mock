@@ -1,0 +1,116 @@
+server:
+  host: "127.0.0.1"
+  port: 8080
+
+rules:
+  # Example 1: Simple GET request with JSON response
+  - name: "Get User Info"
+    matcher:
+      method: "GET"
+      path: "/api/users/123"
+    response:
+      status: 200
+      headers:
+        Content-Type: "application/json"
+      body: |
+        {
+          "id": 123,
+          "name": "John Doe",
+          "email": "john.doe@example.com"
+        }
+
+  # Example 2: POST request matching with custom response
+  - name: "Create Order"
+    matcher:
+      method: "POST"
+      path: "/api/orders"
+    response:
+      status: 201
+      headers:
+        Content-Type: "application/json"
+      body: |
+        {
+          "orderId": "ORD-12345",
+          "status": "created",
+          "message": "Order created successfully"
+        }
+
+  # Example 3: Match by path regex (for dynamic paths)
+  - name: "Get Any User"
+    matcher:
+      method: "GET"
+      path_regex: "^/api/users/[0-9]+$"
+    response:
+      status: 200
+      headers:
+        Content-Type: "application/json"
+      body: |
+        {
+          "id": 999,
+          "name": "Mock User",
+          "email": "mock@example.com"
+        }
+
+  # Example 4: Banking API - Get Balance
+  - name: "Bank Balance API"
+    matcher:
+      method: "GET"
+      path: "/bank/api/v1/balance"
+      headers:
+        Authorization: "Bearer token123"
+    response:
+      status: 200
+      headers:
+        Content-Type: "application/json"
+      body_file: "examples/mocks/bank_balance.json"
+
+  # Example 5: Payment processing API
+  - name: "Payment Processing"
+    matcher:
+      method: "POST"
+      path: "/payments/process"
+    response:
+      status: 200
+      headers:
+        Content-Type: "application/json"
+      body: |
+        {
+          "transactionId": "TXN-MOCK-001",
+          "status": "approved",
+          "amount": 100.00,
+          "currency": "USD"
+        }
+
+  # Example 6: Error simulation
+  - name: "Simulate Server Error"
+    matcher:
+      method: "GET"
+      path: "/api/error"
+    response:
+      status: 500
+      headers:
+        Content-Type: "application/json"
+      body: |
+        {
+          "error": "Internal Server Error",
+          "message": "This is a simulated error"
+        }
+
+  # Example 7: Match with query parameters
+  - name: "Search Products"
+    matcher:
+      method: "GET"
+      path: "/api/products"
+      query_params:
+        category: "electronics"
+    response:
+      status: 200
+      headers:
+        Content-Type: "application/json"
+      body: |
+        {
+          "products": [
+            {"id": 1, "name": "Laptop", "price": 999.99},
+            {"id": 2, "name": "Mouse", "price": 29.99}
+          ]
+        }
