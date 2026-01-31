@@ -52,8 +52,16 @@ impl RequestMatcher {
         if let Some(required_headers) = &matcher.headers {
             for (key, value) in required_headers {
                 if let Some(header_value) = req.headers().get(key) {
-                    if header_value.to_str().unwrap_or("") != value {
-                        return false;
+                    match header_value.to_str() {
+                        Ok(header_str) => {
+                            if header_str != value {
+                                return false;
+                            }
+                        }
+                        Err(_) => {
+                            log::warn!("Failed to convert header '{}' value to string", key);
+                            return false;
+                        }
                     }
                 } else {
                     return false;
