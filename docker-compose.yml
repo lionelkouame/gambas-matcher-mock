@@ -1,0 +1,16 @@
+# Docker Compose for Gambas Matcher Mock
+
+version: '3.8'
+
+services:
+  gambas-matcher-mock:
+    build: .
+    container_name: gambas-matcher-mock
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./examples/mocks:/app/examples/mocks
+    environment:
+      - RUST_LOG=info
+    restart: unless-stopped

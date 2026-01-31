@@ -22,8 +22,8 @@ impl ProxyServer {
     }
 
     pub async fn run(self) -> Result<(), Box<dyn std::error::Error>> {
-        let addr: SocketAddr = format!("{}:{}", self.config.server.host, self.config.server.port)
-            .parse()?;
+        let addr: SocketAddr =
+            format!("{}:{}", self.config.server.host, self.config.server.port).parse()?;
 
         log::info!("Starting Gambas Matcher Mock server on {}", addr);
         log::info!("Loaded {} rules", self.config.rules.len());
@@ -61,17 +61,13 @@ async fn handle_request(
     _config: Arc<Config>,
     matcher: Arc<RequestMatcher>,
 ) -> Result<Response<Body>, Infallible> {
-    log::info!(
-        "Received request: {} {}",
-        req.method(),
-        req.uri().path()
-    );
+    log::info!("Received request: {} {}", req.method(), req.uri().path());
 
     // Try to find a matching rule
     match matcher.find_matching_rule(&req).await {
         Some(rule) => {
             log::info!("Matched rule: {}", rule.name);
-            
+
             match MockGenerator::generate_response(&rule.response) {
                 Ok(response) => {
                     log::info!(
@@ -90,7 +86,11 @@ async fn handle_request(
             }
         }
         None => {
-            log::warn!("No matching rule found for: {} {}", req.method(), req.uri().path());
+            log::warn!(
+                "No matching rule found for: {} {}",
+                req.method(),
+                req.uri().path()
+            );
             Ok(Response::builder()
                 .status(StatusCode::NOT_FOUND)
                 .body(Body::from("No matching rule found"))

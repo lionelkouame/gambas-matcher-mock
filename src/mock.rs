@@ -5,9 +5,10 @@ use std::fs;
 pub struct MockGenerator;
 
 impl MockGenerator {
-    pub fn generate_response(mock: &MockResponse) -> Result<Response<Body>, Box<dyn std::error::Error>> {
-        let mut response = Response::builder()
-            .status(StatusCode::from_u16(mock.status)?);
+    pub fn generate_response(
+        mock: &MockResponse,
+    ) -> Result<Response<Body>, Box<dyn std::error::Error>> {
+        let mut response = Response::builder().status(StatusCode::from_u16(mock.status)?);
 
         // Add headers
         for (key, value) in &mock.headers {
@@ -49,7 +50,7 @@ mod tests {
 
         let result = MockGenerator::generate_response(&mock);
         assert!(result.is_ok());
-        
+
         let response = result.unwrap();
         assert_eq!(response.status(), StatusCode::OK);
     }
@@ -58,7 +59,7 @@ mod tests {
     fn test_generate_response_with_headers() {
         let mut headers = HashMap::new();
         headers.insert("Content-Type".to_string(), "application/json".to_string());
-        
+
         let mock = MockResponse {
             status: 201,
             headers,
@@ -68,7 +69,7 @@ mod tests {
 
         let result = MockGenerator::generate_response(&mock);
         assert!(result.is_ok());
-        
+
         let response = result.unwrap();
         assert_eq!(response.status(), StatusCode::CREATED);
         assert_eq!(

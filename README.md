@@ -36,6 +36,21 @@ cargo build --release
 
 The compiled binary will be available at `target/release/gambas-matcher-mock`.
 
+### Using Docker
+
+You can also run Gambas Matcher Mock using Docker:
+
+```bash
+# Build the Docker image
+docker build -t gambas-matcher-mock .
+
+# Run with example configuration
+docker run -p 8080:8080 -v $(pwd)/examples/config.yaml:/app/config.yaml gambas-matcher-mock
+
+# Or use Docker Compose
+docker-compose up
+```
+
 ## Quick Start
 
 1. **Create a configuration file** (`config.yaml`):
