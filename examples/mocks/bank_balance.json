@@ -1,0 +1,9 @@
+{
+  "accountNumber": "1234567890",
+  "accountHolder": "John Doe",
+  "balance": 15750.50,
+  "currency": "USD",
+  "lastUpdated": "2024-01-31T23:00:00Z",
+  "availableBalance": 15750.50,
+  "pendingTransactions": []
+}
