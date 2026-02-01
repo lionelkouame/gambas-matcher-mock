@@ -1,0 +1,25 @@
+# Gemini Code Review Settings
+
+# Language and Style
+language = "French"
+tone = "Professional and Constructive"
+
+# Review Focus Areas
+focus_areas = [
+    "Architecture Compliance (Hexagonal Architecture)",
+    "Code Quality and Readability",
+    "Performance Optimization",
+    "Security Best Practices",
+    "Error Handling",
+    "Test Coverage"
+]
+
+# Specific Rules
+[rules]
+domain_isolation = "Ensure src/domain does not depend on infrastructure or external frameworks (e.g., no sqlx, axum in domain)."
+visibility = "Check for appropriate visibility modifiers (pub vs pub(crate))."
+error_handling = "Prefer using `thiserror` for library errors and `anyhow` for application errors if applicable."
+async_runtime = "Verify correct usage of Tokio async runtime."
+
+# Output Format
+output_format = "Markdown"
