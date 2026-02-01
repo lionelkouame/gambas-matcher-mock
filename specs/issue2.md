@@ -11,7 +11,7 @@
     >   [x]
     >   [x]  **Domain Database**: Create the `src/domain/entities.rs` file for the `Project` and `MockConfig` entities.
     >   [x]
-    >   [x]  **Hello Word** for test the  architecture
+    >   [x]  **Hello World** for test the  architecture
 >
 > ### 📂 Expected File Structure
 > ```
