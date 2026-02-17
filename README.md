@@ -1,45 +1,80 @@
+
 # 🎭 Gambas Matcher Mock
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Gambas Version](https://img.shields.io/badge/Gambas-3.19+-blue.svg)](http://gambas.sourceforge.net/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-**Gambas Matcher Mock** est une bibliothèque légère et intuitive pour simplifier les tests unitaires et le mocking en Gambas 3. Elle permet de vérifier avec précision les arguments passés à vos objets mockés.
+**Gambas Matcher Mock** is a lightweight and intuitive library designed to simplify unit testing and mocking in Gambas 3. It allows you to precisely verify arguments passed to your mocked objects.
 
 ---
 
-## ✨ Points forts
+## ✨ Key Features
 
-* ✅ **Syntaxe Fluide :** Une API lisible pour définir vos attentes.
-* 🚀 **Léger :** Aucune dépendance externe complexe.
-* 🛠️ **Extensible :** Créez vos propres matchers personnalisés facilement.
-* 🧪 **Focus Qualité :** Conçu pour s'intégrer parfaitement avec vos suites de tests existantes.
+* ✅ **Fluent Syntax:** A highly readable API to define your expectations.
+* 🚀 **Lightweight:** No complex external dependencies.
+* 🛠️ **Extensible:** Easily create your own custom matchers.
+* 🧪 **Quality Focused:** Designed to integrate seamlessly with your existing test suites.
 
 ---
 
 ## 🚀 Installation
 
-Pour intégrer le Matcher Mock à votre projet Gambas :
+To integrate Matcher Mock into your Gambas project:
 
-1. Téléchargez les fichiers `.class` du dossier `src/`.
-2. Importez-les dans votre projet Gambas via l'IDE.
-3. *Optionnel :* Si vous utilisez un gestionnaire de paquets (ex: gb-pkg), ajoutez la dépendance correspondante.
+1. Download the `.class` files from the `src/` directory.
+2. Import them into your Gambas project using the IDE.
+3. *Optional:* If you use a package manager (e.g., `gb-pkg`), add the corresponding dependency.
 
 ---
 
-## 💡 Exemple d'utilisation
+## 💡 Usage Example
 
-Voici comment utiliser le matcher pour vérifier un appel de méthode :
+Here is how to use the matcher to verify a method call:
 
 ```gambas
-' Exemple de vérification d'argument
+' Example of argument verification
 Public Sub Test_MyMethod_With_Matcher()
   Dim hMock As New MyMockObject
   
-  ' Appel de la méthode à tester
+  ' Call the method to be tested
   hMock.ProcessData("Hello World", 42)
   
-  ' Vérification avec le Matcher
+  ' Verification using the Matcher
   Assert.IsTrue(Matcher.Expect("Hello*").Matches(hMock.LastArg(0)))
   Assert.IsTrue(Matcher.Between(40, 50).Matches(hMock.LastArg(1)))
 End Sub
+
+```
+
+---
+
+## 🛠 Project Structure
+
+* `src/` : Contains the source classes for the Matcher and Mock.
+* `tests/` : Unit test examples validating the library's behavior.
+* `examples/` : Sample projects for a quick start.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Check the [CONTRIBUTING.md]() file.
+2. Open an **Issue** to discuss a proposed change.
+3. Submit a **Pull Request**.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE]() file for details.
+
+---
+
+**Author:** [@lionelkouame]()
+
+---
+
+### Pourquoi ces changements ?
+
+* **"Key Features"** au lieu de "Points forts" : C'est le terme standard utilisé dans la documentation technique.
+* **"Usage Example"** : Plus naturel que "Example of use".
+* **Terminologie technique** : J'ai conservé les termes comme *fluent syntax* et *mocking* car ce sont des concepts universels pour les développeurs.
