@@ -1,0 +1,39 @@
+name: "🛠️ Sub-Task / Development Unit"
+description: "A specific technical task belonging to an Epic"
+labels: ["type: feature", "size: small"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔗 Context
+        **Parent Epic:** [Insert Epic link or #IssueNumber]
+  - type: textarea
+    id: goal
+    attributes:
+      label: "Goal"
+      placeholder: "What is the specific goal of this task?"
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "Technical Implementation"
+      placeholder: "Describe the classes to create or methods to modify (e.g., Create Domain/Matcher.class)"
+  - type: textarea
+    id: testing
+    attributes:
+      label: "Test Plan"
+      placeholder: "How will we prove this works? (e.g., Run 'gbw3' in /tests/Domain)"
+    validations:
+      required: true
+  - type: checkboxes
+    id: definition_of_done
+    attributes:
+      label: "Definition of Done"
+      options:
+        - label: "Code follows Hexagonal structure"
+          required: true
+        - label: "Unit tests are passing"
+          required: true
+        - label: "Documentation updated (if needed)"
+          required: false
