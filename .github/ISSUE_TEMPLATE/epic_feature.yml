@@ -1,55 +1,55 @@
-name: "🏗️ Epic / Grosse Feature"
-description: "Planifier une fonctionnalité majeure ou une refonte"
+name: "🏗️ Epic / Major Feature"
+description: "Plan a major feature or a significant refactoring"
 labels: ["epic", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        ## 📌 Définition de l'Epic
-        Utilisez ce template pour les travaux d'envergure qui nécessitent plusieurs Pull Requests.
+        ## 📌 Epic Definition
+        Use this template for large-scale work that requires multiple Pull Requests.
   - type: textarea
     id: overview
     attributes:
-      label: "Vision & Objectif"
-      placeholder: "Quel problème majeur essayons-nous de résoudre ?"
+      label: "Vision & Objective"
+      placeholder: "What major problem are we trying to solve?"
     validations:
       required: true
   - type: textarea
     id: user_stories
     attributes:
-      label: "User Stories / Cas d'usage"
+      label: "User Stories / Use Cases"
       placeholder: |
-        - En tant que développeur, je veux pouvoir...
-        - En tant qu'utilisateur final, je souhaite...
+        - As a developer, I want to be able to...
+        - As an end user, I want to...
   - type: textarea
     id: technical_design
     attributes:
-      label: "Architecture & Design technique"
-      placeholder: "Décrivez les nouvelles classes, modules ou changements de structure prévus."
+      label: "Technical Design & Architecture"
+      placeholder: "Describe the new classes, modules, or planned structural changes."
   - type: textarea
     id: tasks
     attributes:
-      label: "📋 Liste des tâches (Roadmap)"
+      label: "📋 Task List (Roadmap)"
       placeholder: |
-        - [ ] Création de la classe X
-        - [ ] Implémentation de l'interface Y
-        - [ ] Documentation des nouvelles méthodes
-        - [ ] Tests unitaires
+        - [ ] Create class X
+        - [ ] Implement interface Y
+        - [ ] Document new methods
+        - [ ] Unit tests
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: "Alternatives envisagées"
-      placeholder: "Pourquoi avons-nous choisi cette approche plutôt qu'une autre ?"
+      label: "Alternatives Considered"
+      placeholder: "Why did we choose this approach over another?"
   - type: checkboxes
     id: checks
     attributes:
-      label: "Critères d'acceptation"
+      label: "Acceptance Criteria"
       options:
-        - label: "Le code est testé à 100%"
+        - label: "Code is 100% tested"
           required: true
-        - label: "La documentation est mise à jour"
+        - label: "Documentation is updated"
           required: true
-        - label: "Les exemples dans `examples/` sont fonctionnels"
+        - label: "Examples in `examples/` are functional"
           required: true
