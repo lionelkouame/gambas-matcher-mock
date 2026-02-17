@@ -1,0 +1,33 @@
+name: Gambas CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: 🛠 Installer Gambas
+        run: |
+          sudo add-apt-repository ppa:gambas-team/gambas3 -y
+          sudo apt-get update
+          # On installe le runtime et le compilateur de base
+          sudo apt-get install -y gambas3-runtime gambas3-dev gambas3-gb-test
+
+      - name: 🏗 Vérifier la compilation
+        run: |
+          # gbc3 est le compilateur Gambas. 
+          # -p montre la progression, -f force tout.
+          gbc3 -p -f
+
+      - name: 🧪 Lancer les tests
+        run: |
+          # Si tu utilises le composant gb.test de Gambas :
+          # gbw3 est l'exécuteur de tests en ligne de commande
+          gbw3
