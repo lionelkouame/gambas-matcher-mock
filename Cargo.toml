@@ -1,0 +1,6 @@
+[workspace]
+
+members = ["gambas-application",
+    "gambas-domain", "gambas-infrastructure",
+]
+resolver = "2"
