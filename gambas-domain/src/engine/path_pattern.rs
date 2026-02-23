@@ -12,7 +12,6 @@ impl PathPattern {
     pub fn value(&self) -> &str {
         &self.0
     }
-
 }
 
 #[cfg(test)]
