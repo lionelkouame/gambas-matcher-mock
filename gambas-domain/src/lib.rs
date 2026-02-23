@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+mod engine;
+
 pub fn add_domain(left: u64, right: u64) -> u64 {
     left + right
 }
